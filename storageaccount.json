@@ -1,0 +1,24 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "networkSpec": {
+            "type": "object"
+        }
+    },
+    
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('networkSpec').storageAccountname]",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2017-06-01",
+            "sku": {
+                "name": "[parameters('networkSpec').sku]"
+            },
+            "kind": "[parameters('networkSpec').kind]",
+            "properties": {}
+        }
+    ]
+
+}
